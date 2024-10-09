@@ -1,4 +1,4 @@
-import SignIn from "./pages/Auth/SignIn";
+import SignIn from "./pages/auth/SignIn";
 
 function App() {
 
