@@ -1,7 +1,11 @@
 import React from 'react'
-import { Box, Button, InputAdornment, Link, SvgIcon, TextField, Typography } from '@mui/material'
+import { Box, Button, InputAdornment, Link, SvgIcon, Switch, TextField, Typography } from '@mui/material'
+import { useState } from 'react'
 
 const SignInForm = () => {
+
+    const [showPassword, setShowPassword] = useState(false);
+
     return (
         <>
             <Box
@@ -40,9 +44,15 @@ const SignInForm = () => {
                     name="password"
                     label="Password"
                     defaultValue="@demo1234"
-                    type="password"
-                    sx={{ mb: 3 }}
+                    type={showPassword ? "text" : "password"}
                 />
+                <Typography variant='body2' color='textSecondary' sx={{ mb: 3 }}>
+                    Show password?
+                    <Switch 
+                        onChange={() => setShowPassword(!showPassword)}
+                    />
+                </Typography>
+               
 
                 <Button
                     fullWidth
