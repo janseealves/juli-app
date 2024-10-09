@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Button, InputAdornment, Link, SvgIcon, Switch, TextField, Typography } from '@mui/material'
+import { Box, Button, Link, Switch, TextField, Typography } from '@mui/material'
 import { useState } from 'react'
 
 const SignInForm = () => {
