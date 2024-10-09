@@ -1,8 +1,10 @@
+import SignIn from "./pages/Auth/SignIn";
+
 function App() {
 
   return (
     <>
-      <h1>Hello Juli!</h1>
+      <SignIn />
     </>
   )
 }
