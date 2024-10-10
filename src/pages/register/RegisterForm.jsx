@@ -17,14 +17,14 @@ const RegisterForm = () => {
                 alignItems="center"
                 sx={{ mb: 3 }}
             >
-                <Typography variant='h5' fontWeight='bold' color='primary'>Register new account</Typography>
+                <Typography variant='h5' fontWeight='bold' color='primary'>Register</Typography>
             </Box>
-            <Box 
+            <Box
                 display="flex"
                 flexDirection="column"
                 alignItems="flex-end"
             >
-                <TextField 
+                <TextField
                     fullWidth
                     required
                     name="fullname"
@@ -34,7 +34,7 @@ const RegisterForm = () => {
                         inputLabel: { shrink: true },
                     }}
                 />
-                <TextField 
+                <TextField
                     fullWidth
                     required
                     name="email"
@@ -44,7 +44,7 @@ const RegisterForm = () => {
                         inputLabel: { shrink: true },
                     }}
                 />
-                <TextField 
+                <TextField
                     fullWidth
                     required
                     name="password"
@@ -54,7 +54,7 @@ const RegisterForm = () => {
                     slotProps={{
                         inputLabel: { shrink: true },
                         input: {
-                            endAdornment: 
+                            endAdornment:
                                 <InputAdornment position='end'>
                                     <IconButton
                                         onClick={() => setShowPassword(!showPassword)}
@@ -63,7 +63,7 @@ const RegisterForm = () => {
                                     </IconButton>
                                 </InputAdornment>
                         }
-                    }}  
+                    }}
                 />
                 <Button
                     fullWidth
