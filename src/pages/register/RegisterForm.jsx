@@ -1,10 +1,10 @@
-import React from 'react'
-import { Box, Button, IconButton, InputAdornment, Link, Switch, TextField, Typography } from '@mui/material'
-import { useState } from 'react'
-import { Visibility } from '@mui/icons-material';
 import { VisibilityOff } from '@mui/icons-material';
+import { Visibility } from '@mui/icons-material';
+import { Box, Button, IconButton, InputAdornment, Switch, TextField, Typography } from '@mui/material'
+import { useState } from 'react';
+import React from 'react'
 
-const SignInForm = () => {
+const RegisterForm = () => {
 
     const [showPassword, setShowPassword] = useState(false);
 
@@ -15,46 +15,46 @@ const SignInForm = () => {
                 display="flex"
                 flexDirection="column"
                 alignItems="center"
-                sx={{ mb: 5 }}
+                sx={{ mb: 3 }}
             >
-                <Typography variant='h5' fontWeight='bold'>Sign in</Typography>
-                <Typography variant='body2' color='textSecondary'>
-                    Don't have an account?
-                    <Link variant='subtitle2' fontWeight='bold' underline='hover' sx={{ ml: 0.5 }}>
-                        Get started
-                    </Link>
-                </Typography>
+                <Typography variant='h5' fontWeight='bold' color='primary'>Register new account</Typography>
             </Box>
-
-            <Box
+            <Box 
                 display="flex"
                 flexDirection="column"
                 alignItems="flex-end"
             >
-                <TextField
+                <TextField 
                     fullWidth
-                    name="email"
-                    label="Email address"
-                    defaultValue="juli_demo@gmail.com"
+                    required
+                    name="fullname"
+                    label="Full name"
                     sx={{ mb: 3 }}
                     slotProps={{
-                        inputLabel: { shrink: true }
+                        inputLabel: { shrink: true },
                     }}
                 />
-                <Link variant='body1' underline='hover' color='textPrimary' sx={{ mb: 1 }}>
-                    Forgot password?
-                </Link>
-                <TextField
+                <TextField 
                     fullWidth
+                    required
+                    name="email"
+                    label="Email address"
+                    sx={{ mb: 3 }}
+                    slotProps={{
+                        inputLabel: { shrink: true },
+                    }}
+                />
+                <TextField 
+                    fullWidth
+                    required
                     name="password"
                     label="Password"
-                    defaultValue="@demo1234"
-                    type={showPassword ? "text" : "password"}
+                    type={showPassword ? 'text' : 'password'}
                     sx={{ mb: 3 }}
                     slotProps={{
                         inputLabel: { shrink: true },
                         input: {
-                            endAdornment:
+                            endAdornment: 
                                 <InputAdornment position='end'>
                                     <IconButton
                                         onClick={() => setShowPassword(!showPassword)}
@@ -63,10 +63,8 @@ const SignInForm = () => {
                                     </IconButton>
                                 </InputAdornment>
                         }
-                    }}
+                    }}  
                 />
-
-
                 <Button
                     fullWidth
                     size="large"
@@ -75,11 +73,13 @@ const SignInForm = () => {
                     variant="contained"
                 // onClick=
                 >
-                    Sign in
+                    Register
                 </Button>
+
             </Box>
+
         </>
     )
 }
 
-export default SignInForm
+export default RegisterForm

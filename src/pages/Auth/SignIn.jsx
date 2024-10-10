@@ -1,5 +1,5 @@
-import Header from './Header'
-import Body from './Body'
+import Header from '../../components/Header'
+import Body from '../../components/CenteredCard'
 import SignInForm from './SignInForm'
 import React from 'react'
 

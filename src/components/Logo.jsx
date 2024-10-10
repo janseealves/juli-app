@@ -7,7 +7,7 @@ const Logo = ({ width, height }) => {
     return (
         <Box
             component="img"
-            src={"/juli-logo.png"}
+            src={"assets/juli-logo.png"}
             sx={{
                 width: { width },
                 height: { height },
