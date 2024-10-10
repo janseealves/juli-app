@@ -20,7 +20,7 @@ const SignInForm = () => {
                 <Typography variant='h5' fontWeight='bold'>Sign in</Typography>
                 <Typography variant='body2' color='textSecondary'>
                     Don't have an account?
-                    <Link variant='subtitle2' fontWeight='bold' underline='hover' sx={{ ml: 0.5 }}>
+                    <Link href='/register' variant='subtitle2' fontWeight='bold' underline='hover' sx={{ ml: 0.5 }}>
                         Get started
                     </Link>
                 </Typography>
