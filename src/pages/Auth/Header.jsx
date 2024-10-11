@@ -1,6 +1,6 @@
 import { AppBar } from '@mui/material'
 import React from 'react'
-import Logo from './Logo'
+import Logo from '../../components/Logo'
 
 const Header = () => {
     return (

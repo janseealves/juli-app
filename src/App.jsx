@@ -1,5 +1,6 @@
-import SignIn from "./pages/auth/SignIn";
-import Register from "./pages/register/Register";
+import SignIn from "./pages/Auth/SignIn.jsx";
+import Register from "./pages/Auth/Register.jsx";
+
 import { Routes } from "react-router-dom";
 import { Route } from "react-router-dom";
 import { BrowserRouter } from "react-router-dom";
