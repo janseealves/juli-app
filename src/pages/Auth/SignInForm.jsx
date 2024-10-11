@@ -1,12 +1,7 @@
 import React from 'react'
-import { Box, Button, IconButton, InputAdornment, Link, Switch, TextField, Typography } from '@mui/material'
-import { useState } from 'react'
-import { Visibility } from '@mui/icons-material';
-import { VisibilityOff } from '@mui/icons-material';
+import { Box, Button, Link, TextField, Typography } from '@mui/material'
 
 const SignInForm = () => {
-
-    const [showPassword, setShowPassword] = useState(false);
 
     return (
         <>
@@ -48,21 +43,11 @@ const SignInForm = () => {
                     fullWidth
                     name="password"
                     label="Password"
+                    type="password"
                     defaultValue="@demo1234"
-                    type={showPassword ? "text" : "password"}
                     sx={{ mb: 3 }}
                     slotProps={{
                         inputLabel: { shrink: true },
-                        input: {
-                            endAdornment:
-                                <InputAdornment position='end'>
-                                    <IconButton
-                                        onClick={() => setShowPassword(!showPassword)}
-                                    >
-                                        {showPassword ? <Visibility /> : <VisibilityOff />}
-                                    </IconButton>
-                                </InputAdornment>
-                        }
                     }}
                 />
 

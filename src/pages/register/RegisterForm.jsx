@@ -1,12 +1,7 @@
-import { VisibilityOff } from '@mui/icons-material';
-import { Visibility } from '@mui/icons-material';
-import { Box, Button, IconButton, InputAdornment, Switch, TextField, Typography } from '@mui/material'
-import { useState } from 'react';
+import { Box, Button, Link, TextField, Typography } from '@mui/material'
 import React from 'react'
 
 const RegisterForm = () => {
-
-    const [showPassword, setShowPassword] = useState(false);
 
     return (
         <>
@@ -17,7 +12,13 @@ const RegisterForm = () => {
                 alignItems="center"
                 sx={{ mb: 3 }}
             >
-                <Typography variant='h5' fontWeight='bold' color='primary'>Register</Typography>
+                <Typography variant='h5' fontWeight='bold'>Get started</Typography>
+                <Typography variant='body2' color='textSecondary'>
+                    Already have an account?
+                    <Link href='/sign-in' variant='subtitle2' fontWeight='bold' underline='hover' sx={{ ml: 0.5 }}>
+                        Sign in
+                    </Link>
+                </Typography>
             </Box>
             <Box
                 display="flex"
@@ -27,18 +28,9 @@ const RegisterForm = () => {
                 <TextField
                     fullWidth
                     required
-                    name="fullname"
-                    label="Full name"
-                    sx={{ mb: 3 }}
-                    slotProps={{
-                        inputLabel: { shrink: true },
-                    }}
-                />
-                <TextField
-                    fullWidth
-                    required
                     name="email"
                     label="Email address"
+                    defaultValue="juli_demo@gmail.com"
                     sx={{ mb: 3 }}
                     slotProps={{
                         inputLabel: { shrink: true },
@@ -49,20 +41,23 @@ const RegisterForm = () => {
                     required
                     name="password"
                     label="Password"
-                    type={showPassword ? 'text' : 'password'}
+                    type="password"
+                    defaultValue="@demo1234"
                     sx={{ mb: 3 }}
                     slotProps={{
                         inputLabel: { shrink: true },
-                        input: {
-                            endAdornment:
-                                <InputAdornment position='end'>
-                                    <IconButton
-                                        onClick={() => setShowPassword(!showPassword)}
-                                    >
-                                        {showPassword ? <Visibility /> : <VisibilityOff />}
-                                    </IconButton>
-                                </InputAdornment>
-                        }
+                    }}
+                />
+                <TextField
+                    fullWidth
+                    required
+                    name="reTypePassword"
+                    label="Re-Type Password"
+                    type="password"
+                    defaultValue="@demo1234"
+                    sx={{ mb: 3 }}
+                    slotProps={{
+                        inputLabel: { shrink: true },
                     }}
                 />
                 <Button
@@ -75,9 +70,7 @@ const RegisterForm = () => {
                 >
                     Register
                 </Button>
-
             </Box>
-
         </>
     )
 }

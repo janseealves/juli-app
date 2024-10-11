@@ -1,1 +1,1 @@
-![Juli Logo](public/juli-logo.png)
+![Juli Logo](public/assets/juli-logo.png)
