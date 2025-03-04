@@ -17,9 +17,9 @@ def get_db():
     finally:
         db.close()
 
-@router.get("/user",tags=["user"], status_code=HTTPStatus.OK, response_model=UsersResponse)
+@router.get("/users",tags=["user"], status_code=HTTPStatus.OK, response_model=UsersResponse)
 def get_users_endpoint(db: Session=Depends(get_db)):
-    return get_users(db)
+    return {"users": get_users(db)}
 
 @router.get("/user/{user_id}",tags=["user"], status_code=HTTPStatus.OK, response_model=UserPublic)
 def get_user_endpoint(user_id: int, db: Session=Depends(get_db)):
