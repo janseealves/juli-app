@@ -26,5 +26,4 @@ def delete_user(db: Session, user_id: int):
     db_user = db.query(User).filter(User.id == user_id).first()
     db.delete(db_user)
     db.commit()
-    db.refresh(db_user)
     return {"message": "User deleted successfully"}
