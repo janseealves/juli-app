@@ -6,7 +6,3 @@
 
 # Local database
 database.db
-=======
-/.venv
-
-__pycache__/
