@@ -1,6 +1,8 @@
 from sqlalchemy.orm import Mapped, mapped_column, registry
 from sqlalchemy import DATE
 
+from src.database import engine
+
 registry = registry() # Registra metadados de classes mapeadas
 
 @registry.mapped_as_dataclass
@@ -52,3 +54,5 @@ class Wallet_User:
     user_id: Mapped[int] = mapped_column(foreign_key=User.id, not_null=True)
     wallet_id: Mapped[int] = mapped_column(foreign_key=Wallet.id, not_null=True)
     is_owner: Mapped[bool] = mapped_column(not_null=True)
+
+# registry.metadata.create_all(engine)
