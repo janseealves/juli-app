@@ -2,8 +2,8 @@ from fastapi import APIRouter, Depends
 from http import HTTPStatus
 from sqlalchemy.orm import Session
 
-from src.schemas import UserPublic, UsersResponse, UserSchema
-from src.crud import get_users, get_user, create_user
+from src.schemas import Message, UserPublic, UsersResponse, UserSchema
+from src.crud import get_users, get_user, create_user, update_user, delete_user
 from src.database import SessionLocal
 
 router = APIRouter()
@@ -26,3 +26,11 @@ def get_user_endpoint(user_id: int, db: Session=Depends(get_db)):
 @router.post("/user", tags=["user"], status_code=HTTPStatus.CREATED, response_model=UserPublic)
 def create_user_endpoint(user: UserSchema, db: Session=Depends(get_db)):
     return create_user(db, user)
+
+@router.put("/user", tags=["user"], status_code=HTTPStatus.OK, response_model=UserPublic)
+def update_user_endpoint(user_id: int, user_newname: str, db: Session=Depends(get_db)):
+    return update_user(db, user_id, user_newname)
+
+@router.delete("/user/{user_id}", tags=["user"], status_code=HTTPStatus.OK, response_model=Message)
+def delete_user_endpoint(user_id: int, db: Session=Depends(get_db)):
+    return delete_user(db, user_id)
