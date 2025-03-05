@@ -8,9 +8,9 @@ class User:
     __tablename__ = "users"
 
     id: Mapped[int] = mapped_column(init=False, primary_key=True)
-    name: Mapped[str]
-    email: Mapped[str]
-    password: Mapped[str]
+    name: Mapped[str] = mapped_column(unique=True, not_null=True)
+    email: Mapped[str] = mapped_column(unique=True, not_null=True)
+    password: Mapped[str] = mapped_column(not_null=True)
 
 class Category:
     __tablename__ = "categories"
