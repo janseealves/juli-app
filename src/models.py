@@ -1,11 +1,13 @@
-from sqlalchemy import Column, Integer, String
-from .database import Base
+from sqlalchemy.orm import Mapped, mapped_column, registry
 
-class User(Base):
+registry = registry()
+
+@registry.mapped_as_dataclass
+
+class User:
     __tablename__ = "users"
 
-    id = Column(Integer, primary_key=True)
-    name = Column(String)
-    email = Column(String , unique=True)
-    password = Column(String)
-    
+    id: Mapped[int] = mapped_column(init=False, primary_key=True)
+    name: Mapped[str]
+    email: Mapped[str]
+    password: Mapped[str]

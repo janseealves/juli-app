@@ -4,11 +4,9 @@ from sqlalchemy.orm import Session
 
 from src.schemas import UserPublic, UsersResponse, UserSchema
 from src.crud import get_users, get_user, create_user
-from src.database import Base, engine, SessionLocal
+from src.database import SessionLocal
 
 router = APIRouter()
-
-Base.metadata.create_all(bind=engine)
 
 def get_db():
     db = SessionLocal()
