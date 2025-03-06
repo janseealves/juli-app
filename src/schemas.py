@@ -4,12 +4,12 @@ class Message(BaseModel):
     message: str
 
 class UserSchema(BaseModel):
-    name: str
+    username: str
     email: EmailStr
     password: str
 
 class UserPublic(BaseModel):
-    name: str
+    username: str
     email: EmailStr
 
 class UsersResponse(BaseModel):
