@@ -1,0 +1,49 @@
+@startuml juli
+
+class User {
+    *id: Integer
+    +name: String
+    +email: String
+    +password: String
+}
+
+class Category {
+    *id: Integer
+    +name: String
+}
+
+class Expense {
+    *id: Integer
+    +user_id: Integer 
+    +amount: Double
+    +description: String
+    +date: Date
+    +category_id: Integer
+}
+
+class Income {
+    *id: Integer
+    +user_id: Integer
+    +amount: Double
+    +description: String
+    +date: Date
+}
+
+class Wallet {
+    *id: Integer
+    +name: String
+    +balance: Double
+}
+
+class WalletUser {
+    *id: Integer
+    +wallet_id: Integer
+    +user_id: Integer
+}
+
+Wallet "1" -- "0..*" Expense
+Wallet "1" -- "0..*" Income
+User "0..*" -- "0..*" WalletUser
+Expense "1" -- "0..1" Category
+
+@enduml
