@@ -6,3 +6,6 @@
 
 # Local database
 database.db
+
+# Dot env file
+.env

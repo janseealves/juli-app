@@ -19,18 +19,18 @@ def get_db():
 def get_users_endpoint(db: Session=Depends(get_db)):
     return {"users": get_users(db)}
 
-@router.get("/user/{user_id}",tags=["user"], status_code=HTTPStatus.OK, response_model=UserPublic)
+@router.get("/users/{user_id}",tags=["user"], status_code=HTTPStatus.OK, response_model=UserPublic)
 def get_user_endpoint(user_id: int, db: Session=Depends(get_db)):
     return get_user(db, user_id)
 
-@router.post("/user", tags=["user"], status_code=HTTPStatus.CREATED, response_model=UserPublic)
+@router.post("/users", tags=["user"], status_code=HTTPStatus.CREATED, response_model=UserPublic)
 def create_user_endpoint(user: UserSchema, db: Session=Depends(get_db)):
     return create_user(db, user)
 
-@router.put("/user", tags=["user"], status_code=HTTPStatus.OK, response_model=UserPublic)
-def update_user_endpoint(user_id: int, user_newname: str, db: Session=Depends(get_db)):
-    return update_user(db, user_id, user_newname)
+@router.put("/users/{user_id}", tags=["user"], status_code=HTTPStatus.OK, response_model=UserPublic)
+def update_user_endpoint(user_id, user: UserSchema, db: Session=Depends(get_db)):
+    return update_user(db, user_id, user)
 
-@router.delete("/user/{user_id}", tags=["user"], status_code=HTTPStatus.OK, response_model=Message)
+@router.delete("/users/{user_id}", tags=["user"], status_code=HTTPStatus.OK, response_model=Message)
 def delete_user_endpoint(user_id: int, db: Session=Depends(get_db)):
-    return delete_user(db, user_id)
+    return delete_user(db, user_id) 

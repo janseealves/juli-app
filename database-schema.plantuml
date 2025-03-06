@@ -41,16 +41,9 @@ class WalletUser {
     +user_id: Integer
 }
 
-class SharedExpense {
-    +expense_id: Integer
-    +user_id: Integer
-}
-
-User "1" -- "0..*" Expense
-User "1" -- "0..*" Income
+Wallet "1" -- "0..*" Expense
+Wallet "1" -- "0..*" Income
 User "0..*" -- "0..*" WalletUser
 Expense "1" -- "0..1" Category
-Expense "0..*" -- "0..*" SharedExpense
-
 
 @enduml
