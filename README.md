@@ -2,9 +2,13 @@
 ---
 1. Dependencies install: 
 
-        `pip freeze -r requirements.txt`
+        `pip install -r requirements.txt`
 
-2. Run uvicorn server: 
+2. Create a .env file:
+
+        `DATABASE_URL="sqlite:///{path}"`
+
+3. Run uvicorn server: 
 
         `uvicorn src.api:app --reload`
 ---
