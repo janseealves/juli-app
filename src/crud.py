@@ -12,11 +12,11 @@ def get_user(db: Session, user_id: int):
     return db.query(User).filter(User.id == user_id).first()
 
 def create_user(db: Session, user: UserSchema):
-    username_exists = db.query(User).filter(User.username == user.username, User.id != user.id).first()
+    username_exists = db.query(User).filter(User.username == user.username).first()
     if username_exists:
         raise HTTPException(status_code=HTTPStatus.BAD_REQUEST, detail="Username already exists")
     
-    email_exists = db.query(User).filter(User.email == user.email, User.id != user.id).first()
+    email_exists = db.query(User).filter(User.email == user.email).first()
     if email_exists:
         raise HTTPException(status_code=HTTPStatus.BAD_REQUEST, detail="Email already exists")
     
