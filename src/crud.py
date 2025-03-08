@@ -4,6 +4,7 @@ from sqlalchemy import func
 from sqlalchemy.orm import Session
 from .models import User
 from .schemas import UserSchema
+from .security import hashed_password
 
 def get_users(db: Session):
     return db.query(User).all()
@@ -20,7 +21,11 @@ def create_user(db: Session, user: UserSchema):
     if email_exists:
         raise HTTPException(status_code=HTTPStatus.BAD_REQUEST, detail="Email already exists")
     
-    db_user = User(**user.model_dump())
+    db_user = User(
+        username=user.username,
+        email=user.email,
+        password=hashed_password(user.password)
+    )
     db_user.created_at = func.now()
     db.add(db_user)
     db.commit()
