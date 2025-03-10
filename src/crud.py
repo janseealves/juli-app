@@ -1,9 +1,10 @@
+from datetime import date
 from fastapi import HTTPException
 from http import HTTPStatus
 from sqlalchemy import func
 from sqlalchemy.orm import Session
 from .models import Category, User, Wallet, WalletUser, Expense, Income
-from .schemas import  Date, ExpenseSchema, IncomeSchema, UserSchema
+from .schemas import ExpenseSchema, IncomeSchema, UserSchema
 from .security import hashed_password
 
 # CRUD operations for User
@@ -176,7 +177,7 @@ def create_expense(db: Session, expense: ExpenseSchema):
     db.commit()
     return expense
 
-def update_expense(db: Session, expense_id: int, expense_category: str, expense_amount: float, expense_date: Date):
+def update_expense(db: Session, expense_id: int, expense_category: str, expense_amount: float, expense_date: date):
     expense = db.query(Expense).filter(Expense.id == expense_id).first()
     if not expense:
         raise HTTPException(status_code=HTTPStatus.NOT_FOUND, detail="Expense not found")
@@ -219,7 +220,7 @@ def create_income(db: Session, income: IncomeSchema):
     db.refresh(income)
     return income
 
-def update_income(db: Session, income_id: int, income_amount: float, income_description: str, income_date: Date):
+def update_income(db: Session, income_id: int, income_amount: float, income_description: str, income_date: date):
     income = db.query(Income).filter(Income.id == income_id).first()
     if not income:
         raise HTTPException(status_code=HTTPStatus.NOT_FOUND, detail="Income not found")

@@ -10,9 +10,9 @@ class User:
     __tablename__ = "users"
 
     id: Mapped[int] = mapped_column(init=False, primary_key=True)
-    username: Mapped[str] = mapped_column(unique=True, not_null=True)
-    email: Mapped[str] = mapped_column(unique=True, not_null=True)
-    password: Mapped[str] = mapped_column(not_null=True)
+    username: Mapped[str] = mapped_column(unique=True)
+    email: Mapped[str] = mapped_column(unique=True)
+    password: Mapped[str]
     created_at: Mapped[datetime] = mapped_column(init=False)
 
 @registry.mapped_as_dataclass
@@ -20,7 +20,7 @@ class Wallet:
     __tablename__ = "wallets"
 
     id: Mapped[int] = mapped_column(init=False, primary_key=True)
-    wallet_name: Mapped[str] = mapped_column(not_null=True)
+    wallet_name: Mapped[str]
     # TODO: Pensar em uma feature de mapear despesas e investimentos, para melhorar a visualização da distribuição do saldo.
     balance: Mapped[float] = mapped_column(init=False, default=0.0)
 
@@ -36,16 +36,16 @@ class Category:
     __tablename__ = "categories"
 
     id: Mapped[int] = mapped_column(init=False, primary_key=True)
-    category_name: Mapped[str] = mapped_column(unique=True, not_null=True)
+    category_name: Mapped[str] = mapped_column(unique=True)
 
 @registry.mapped_as_dataclass
 class Expense: 
     __tablename__ = "expenses"
 
     id: Mapped[int] = mapped_column(init=False, primary_key=True)
-    amount: Mapped[float] = mapped_column(not_null=True)
+    amount: Mapped[float]
     description: Mapped[str]
-    date: Mapped[datetime] = mapped_column(not_null=True) # TODO: Verificar se é possível usar o tipo datetime
+    date: Mapped[datetime] # TODO: Verificar se é possível usar o tipo datetime
     wallet_id: Mapped[int] = mapped_column(ForeignKey("wallets.id"))
 
 @registry.mapped_as_dataclass
@@ -53,9 +53,9 @@ class Income:
     __tablename__ = "incomes"
 
     id: Mapped[int] = mapped_column(init=False, primary_key=True)
-    amount: Mapped[float] = mapped_column(not_null=True)
+    amount: Mapped[float]
     description: Mapped[str]
-    date: Mapped[datetime] = mapped_column(not_null=True)
+    date: Mapped[datetime]
     wallet_id: Mapped[int] = mapped_column(ForeignKey("wallets.id"))
 
 registry.metadata.create_all(engine)

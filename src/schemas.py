@@ -1,7 +1,6 @@
 from pydantic import BaseModel, EmailStr
 from typing import Optional
-from datetime import datetime
-
+from datetime import date
 class Message(BaseModel):
     message: str
 
@@ -45,19 +44,16 @@ class CategoryInDB(BaseModel):
     category_name: str
 
 # -- Expense schemas --
-class Date(BaseModel):
-    date: datetime.date
-
 class ExpenseSchema(BaseModel):
     expense_name: str
     amount: float
     category_id: int
     wallet_id: int
-    date: Date
+    date: date
 
 # -- Income schemas --
 class IncomeSchema(BaseModel):
     amount: float
     description: Optional[str]
-    date: Date
+    date: date
     wallet_id: int
